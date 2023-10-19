@@ -61,7 +61,7 @@ pants_cart = []
 
 # main script
 while True:
-    control = str(input("Are you interested in thrifted clothing? Y/N: "))
+    control = str(input("Do you want to browse our shop? Y (yes) N (check out) E (exit): "))
     if control.lower() == "y":
         size, size_cost = get_size()
         print(f"The added cost of {size['name']} size is {size_cost} pesos.")
@@ -205,33 +205,34 @@ while True:
             print("that would be", hats_cost, "pesos")
             print("Item has been added to the cart.")
     elif control.lower() == "n":
+    # script for the cart
+        while True:
+            print("\n_____________________Your Meiple Tree Cart_________________________\n")
+            if jackets_cart:
+                for item in jackets_cart:
+                    print(f"{item}\n")
+            if shirts_cart:
+                for item in shirts_cart:
+                    print(f"{item}\n")
+            if pants_cart:
+                for item in pants_cart:
+                    print(f"{item}\n")
+            if hats_cart:
+                for item in hats_cart:
+                    print(f"{item}\n")
+            print("\n____________________________________________________________________\n")
+            cart_response = str(input("Are you sure on your current purchase? Y/N: "))
+            print()
+            if cart_response.lower() == "y":
+                break
+            elif cart_response.lower() == "n":
+                print("Thank you for thrifting with us!")
+                break
+            else:
+                print("Please enter either Y (yes) or N (no) only")
+        break        
+    elif control.lower() == "e":
         break
     else:
-        print("Input either Y (yes) or N (no): ")
-
-# script for the cart
-while True:
-    print("\n_____________________Your Meiple Tree Cart_________________________\n")
-    if jackets_cart:
-        for item in jackets_cart:
-            print(f"{item}\n")
-    if shirts_cart:
-        for item in shirts_cart:
-            print(f"{item}\n")
-    if pants_cart:
-        for item in pants_cart:
-            print(f"{item}\n")
-    if hats_cart:
-        for item in hats_cart:
-            print(f"{item}\n")
-    print("\n____________________________________________________________________\n")
-    cart_response = str(input("Are you sure on your current purchase? Y/N: "))
-    print()
-    if cart_response.lower() == "y":
-        break
-    elif cart_response.lower() == "n":
-        print("Thank you for thrifting with us!")
-        break
-    else:
-        print("Please enter either Y (yes) or N (no) only")
+        print("Input either Y/N/E: ")
         
