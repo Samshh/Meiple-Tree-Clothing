@@ -17,7 +17,7 @@ def is_strong_password(password):
 def create_account():
     while True:
         username = input("Enter a username: ")
-        with open("/UserData.txt", "r") as file:
+        with open("C:/SCdVSC/PythonProgs/Projects/UserData.txt", "r") as file:
             for line in file:
                 account_info = line.strip().split(",")
                 if len(account_info) == 4 and account_info[0] == username:
@@ -28,7 +28,7 @@ def create_account():
                 if is_strong_password(password):
                     email = input("Enter your email: ")
                     full_name = input("Enter your full name: ")
-                    with open("/UserData.txt", "a") as file:
+                    with open("C:/SCdVSC/PythonProgs/Projects/UserData.txt", "a") as file:
                         file.write(f"{username},{password},{email},{full_name}\n")
                     print("Account created successfully!")
                     break
@@ -39,14 +39,12 @@ def create_account():
 def login():
     username = input("Enter your username: ")
     password = input("Enter your password: ")
-    with open("/UserData.txt", "r") as file:
+    with open("C:/SCdVSC/PythonProgs/Projects/UserData.txt", "r") as file:
         for line in file:
             account_info = line.strip().split(",")
             if len(account_info) == 4 and account_info[0] == username and account_info[1] == password:
                 print("Login successful. Welcome, " + account_info[3] + "!")
                 import ClothingLine
-                if ClothingLine.control.lower == "e":
-                    sys.exit()
                 Address = str(input("Where is your current address for delivery?: "))
                 while True:
                     try:
@@ -77,17 +75,18 @@ def login():
                                 print(f"{item}\n")
                         print(f'Your Address: {Address}\nYour phone number: +63{PhnNumber}')
                         print("\n____________________________________________________________________\n")
-                        with open('\Resibo.txt', 'r') as file:
+                        with open('C:\SCdVSC\PythonProgs\Projects\Resibo.txt', 'r') as file:
                             f_contents = file.read()
                             print(f_contents)
-                        break
-                if informationresult.lower() == "n":
-                    print("Kindly Double Check the information")
+                        sys.exit()
+                elif informationresult.lower() == "n":
+                    print("Connection timed-out")
+                    sys.exit()
                 else:
-                    print("")
+                    print("Enter only Y/N.")
                 break
         else:
-            print("Incorrect username or password.")
+            print("Enter Credentials Again!.")
 
 # where the code starts
 print("____________________________________________________________________")
@@ -112,6 +111,7 @@ while True:
     elif choice.lower() == "login":
         login()
     elif choice.lower() == "exit":
+        print("Bye!")
         break
     else:
         print("Invalid choice. Please enter 'create', 'login', or 'exit'.")
