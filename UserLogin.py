@@ -17,10 +17,10 @@ def is_strong_password(password):
 def create_account():
     while True:
         username = input("Enter a username: ")
-        with open("path/UserData.txt", "r") as file:  # enter specific file path use "/"
+        with open("/UserData.txt", "r") as file:
             for line in file:
                 account_info = line.strip().split(",")
-                if len(account_info) >= 1 and account_info[0] == username:
+                if len(account_info) == 4 and account_info[0] == username:
                     print("Username is already taken. Please choose another.")
                     break
             else:
@@ -28,7 +28,7 @@ def create_account():
                 if is_strong_password(password):
                     email = input("Enter your email: ")
                     full_name = input("Enter your full name: ")
-                    with open("path/UserData.txt", "r") as file:  # enter specific file path use "/"
+                    with open("/UserData.txt", "a") as file:
                         file.write(f"{username},{password},{email},{full_name}\n")
                     print("Account created successfully!")
                     break
@@ -39,7 +39,7 @@ def create_account():
 def login():
     username = input("Enter your username: ")
     password = input("Enter your password: ")
-    with open("path/UserData.txt", "r") as file:  # enter specific file path use "/"
+    with open("/UserData.txt", "r") as file:
         for line in file:
             account_info = line.strip().split(",")
             if len(account_info) == 4 and account_info[0] == username and account_info[1] == password:
@@ -77,7 +77,7 @@ def login():
                                 print(f"{item}\n")
                         print(f'Your Address: {Address}\nYour phone number: +63{PhnNumber}')
                         print("\n____________________________________________________________________\n")
-                        with open('\Resibo.txt', 'r') as file: # enter specific file path use "\"
+                        with open('\Resibo.txt', 'r') as file:
                             f_contents = file.read()
                             print(f_contents)
                         break
