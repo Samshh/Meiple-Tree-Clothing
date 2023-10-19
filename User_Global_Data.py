@@ -75,7 +75,7 @@ def login():
                     print(f'''Your Address: {Address}
 Your phone number: +63{PhnNumber}''')
                     print("\n____________________________________________________________________\n")
-                    with open('C:\SCdVSC\PythonProgs\Projects\Resibo.txt', 'r') as f:
+                    with open('Resibo.txt', 'r') as f:
                         f_contents = f.read()
                         print(f_contents)
                     break
