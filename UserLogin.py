@@ -17,7 +17,7 @@ def is_strong_password(password):
 def create_account():
     while True:
         username = input("Enter a username: ")
-        with open("C:/SCdVSC/PythonProgs/Projects/UserData.txt", "r") as file:
+        with open("path/UserData.txt", "r") as file:  # enter specific file path use "/"
             for line in file:
                 account_info = line.strip().split(",")
                 if len(account_info) >= 1 and account_info[0] == username:
@@ -77,7 +77,7 @@ def login():
                                 print(f"{item}\n")
                         print(f'Your Address: {Address}\nYour phone number: +63{PhnNumber}')
                         print("\n____________________________________________________________________\n")
-                        with open('C:\SCdVSC\PythonProgs\Projects\Resibo.txt', 'r') as file:
+                        with open('\Resibo.txt', 'r') as file: # enter specific file path use "\"
                             f_contents = file.read()
                             print(f_contents)
                         break
