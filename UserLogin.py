@@ -1,7 +1,5 @@
 import re
-
-# dictionary for the accounts
-user_accounts = {}  
+import sys
 
 # requires a strong password function
 def is_strong_password(password):
@@ -19,19 +17,23 @@ def is_strong_password(password):
 def create_account():
     while True:
         username = input("Enter a username: ")
-        if username in user_accounts:
-            print("Username is already taken. Please choose another.")
-        else:
-            password = input("Enter a password: ")
-            if is_strong_password(password):
-                email = input("Enter your email: ")
-                full_name = input("Enter your full name: ")
-                with open("path/UserData.txt", "a") as file:  # enter specific file path use "/"
-                    file.write(f"{username},{password},{email},{full_name}\n")
-                print("Account created successfully!")
-                break
+        with open("C:/SCdVSC/PythonProgs/Projects/UserData.txt", "r") as file:
+            for line in file:
+                account_info = line.strip().split(",")
+                if len(account_info) >= 1 and account_info[0] == username:
+                    print("Username is already taken. Please choose another.")
+                    break
             else:
-                print("Password is not strong enough. It should be at least 8 characters long and contain uppercase, lowercase, digit, and a special character.")
+                password = input("Enter a password: ")
+                if is_strong_password(password):
+                    email = input("Enter your email: ")
+                    full_name = input("Enter your full name: ")
+                    with open("path/UserData.txt", "r") as file:  # enter specific file path use "/"
+                        file.write(f"{username},{password},{email},{full_name}\n")
+                    print("Account created successfully!")
+                    break
+                else:
+                    print("Password is not strong enough. It should be at least 8 characters long and contain uppercase, lowercase, digit, and a special character.")
 
 # logging in will run the base script
 def login():
@@ -43,6 +45,8 @@ def login():
             if len(account_info) == 4 and account_info[0] == username and account_info[1] == password:
                 print("Login successful. Welcome, " + account_info[3] + "!")
                 import ClothingLine
+                if ClothingLine.control.lower == "e":
+                    sys.exit()
                 Address = str(input("Where is your current address for delivery?: "))
                 while True:
                     try:
@@ -73,7 +77,7 @@ def login():
                                 print(f"{item}\n")
                         print(f'Your Address: {Address}\nYour phone number: +63{PhnNumber}')
                         print("\n____________________________________________________________________\n")
-                        with open('path\Resibo.txt', 'r') as file: # enter specific file path use "\"
+                        with open('C:\SCdVSC\PythonProgs\Projects\Resibo.txt', 'r') as file:
                             f_contents = file.read()
                             print(f_contents)
                         break
