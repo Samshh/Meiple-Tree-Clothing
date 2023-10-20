@@ -239,3 +239,4 @@ while True:
     else:
         print("Input either Y/N/E: ")
         
+sam = 10
