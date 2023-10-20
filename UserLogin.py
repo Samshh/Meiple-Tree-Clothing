@@ -20,7 +20,7 @@ def create_account():
     
     while True:
         username = input("Enter a username: ")
-        with open(r"C:\Users\enriq\OneDrive\Documents\Meiple-Tree-Clothing\UserLogin.py", "r") as file:
+        with open("C:/SCdVSC/PythonProgs/Projects/UserData.txt", "r") as file:
             for line in file:
                 account_info = line.strip().split(",")
                 if len(account_info) == 4 and account_info[0] == username:
@@ -31,7 +31,7 @@ def create_account():
                 if is_strong_password(password):
                     email = input("Enter your email: ")
                     full_name = input("Enter your full name: ")
-                    with open("C:/Users/enriq/OneDrive/Documents/Meiple-Tree-Clothing/UserData.txt", "a") as file:
+                    with open("C:/SCdVSC/PythonProgs/Projects/UserData.txt", "a") as file:
                         file.write(f"{username},{password},{email},{full_name}\n")
                     print("Account created successfully!")
                     break
@@ -42,7 +42,7 @@ def create_account():
 def login():
     username = input("Enter your username: ")
     password = input("Enter your password: ")
-    with open("C:/SCdVSC/PythonProgs/Projects/UserData.txt", "r") as file:
+    with open("D:/Users/User/Documents/Meiple-Tree-Clothing/UserData.txt", "r") as file:
         for line in file:
             account_info = line.strip().split(",")
             if len(account_info) == 4 and account_info[0] == username and account_info[1] == password:
