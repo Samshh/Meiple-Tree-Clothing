@@ -1,6 +1,6 @@
 import re
 import sys
-
+sam = "gwapo"
 # requires a strong password function
 def is_strong_password(password):
     if (
