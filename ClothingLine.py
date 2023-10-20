@@ -236,8 +236,6 @@ while True:
     elif control.lower() == "e":
         print("Please come again!")
         sys.exit()
-        #please fix
     else:
         print("Input either Y/N/E: ")
         
-# delete line 
