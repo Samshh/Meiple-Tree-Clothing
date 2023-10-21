@@ -75,7 +75,7 @@ def login():
                                 print(f"{item}\n")
                         print(f'Your Address: {Address}\nYour phone number: +63{PhnNumber}')
                         print("\n____________________________________________________________________\n")
-                        with open('C:\SCdVSC\PythonProgs\Projects\Resibo.txt', 'r') as file:
+                        with open('D:/Users/User/Documents/Meiple-Tree-Clothing/UserData.txt', 'r') as file:
                             f_contents = file.read()
                             print(f_contents)
                         sys.exit()
