@@ -17,7 +17,7 @@ def is_strong_password(password):
 def create_account():
     while True:
         username = input("Enter a username: ")
-        with open("D:/Users/User/Documents/Meiple-Tree-Clothing/UserData.txt", "r") as file:
+        with open("C:/Meiple-Tree-Clothing/UserData.txt", "r") as file:
             for line in file:
                 account_info = line.strip().split(",")
                 if len(account_info) == 4 and account_info[0] == username:
@@ -28,18 +28,19 @@ def create_account():
                 if is_strong_password(password):
                     email = input("Enter your email: ")
                     full_name = input("Enter your full name: ")
-                    with open("D:/Users/User/Documents/Meiple-Tree-Clothing/UserData.txt", "a") as file:
+                    with open("C:/Meiple-Tree-Clothing/UserData.txt", "a") as file:
                         file.write(f"{username},{password},{email},{full_name}\n")
                     print("Account created successfully!")
                     break
                 else:
                     print("Password is not strong enough. It should be at least 8 characters long and contain uppercase, lowercase, digit, and a special character.")
+                    break
 
 # logging in will run the base script
 def login():
     username = input("Enter your username: ")
     password = input("Enter your password: ")
-    with open("D:/Users/User/Documents/Meiple-Tree-Clothing/UserData.txt", "r") as file:
+    with open("C:/Meiple-Tree-Clothing/UserData.txt", "r") as file:
         for line in file:
             account_info = line.strip().split(",")
             if len(account_info) == 4 and account_info[0] == username and account_info[1] == password:
@@ -75,7 +76,7 @@ def login():
                                 print(f"{item}\n")
                         print(f'Your Address: {Address}\nYour phone number: +63{PhnNumber}')
                         print("\n____________________________________________________________________\n")
-                        with open('D:/Users/User/Documents/Meiple-Tree-Clothing/Resibo.txt', 'r') as file:
+                        with open('C:/Meiple-Tree-Clothing/Resibo.txt', 'r') as file:
                             f_contents = file.read()
                             print(f_contents)
                         sys.exit()
